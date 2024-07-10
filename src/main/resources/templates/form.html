@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form</title>
+</head>
+<body>
+<form action="#" th:action="@{/submitForm}" th:method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"/>
+    <br/>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email"/>
+    <br/>
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male"/>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female"/>
+    <label for="female">Female</label>
+    <input type="radio" id="other" name="gender" value="other"/>
+    <label for="other">Other</label>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
