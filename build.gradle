@@ -1,8 +1,8 @@
-plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.3.1'
-	id 'io.spring.dependency-management' version '1.1.5'
-}
+plugins(({
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+}))
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -26,4 +26,22 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+task createZip(type: Zip) {
+	from 'src/main/resources' // Include the resources directory
+	from 'build/classes/java/main' // Include compiled classes
+	from('src/main/java') {
+		include '**/*.java' // Include all Java source files
+		exclude '**/test/**' // Exclude test sources
+	}
+	archiveFileName = "project-${version}.zip" // Name of the ZIP file
+	destinationDirectory = file("${buildDir}/libs") // Store the ZIP file under build/libs
+
+	// Add custom metadata to the ZIP file
+	zip64 true // Enable ZIP64 format if the archive is larger than 4GB
+	entryCompression = ZipEntryCompression.STORED // Store entries without compression
+	eachFile { details ->
+		details.path = "myProject/${details.path}" // Prefix all entries with "myProject/"
+	}
 }
