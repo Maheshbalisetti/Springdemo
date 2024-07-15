@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog Box</title>
+    <script>
+        function showDialog() {
+            alert("This is a dialog box");
+        }
+    </script>
+</head>
+<body>
+<button onclick="showDialog()">Show Dialog</button>
+</body>
+</html>
